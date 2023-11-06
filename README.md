@@ -13,7 +13,7 @@ Before you begin setting up this Data Engineering ETL project, ensure you have t
 
 To verify that you have installed the correct version of Astro CLI, run the following command:
 
-```bash
+  ```bash
 astro version
 
 Create a dedicated folder where you want to set up your Astro project and initialize it by running the following command:

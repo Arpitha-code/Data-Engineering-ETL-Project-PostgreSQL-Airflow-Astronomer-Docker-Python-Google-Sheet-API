@@ -28,31 +28,26 @@ astro dev start
 
 ## Setting Up PostgreSQL in Airflow
 
-1. Open the Airflow web UI.
-
-2. In the Airflow UI, navigate to the "Admin" tab located in the top menu.
-
-3. From the dropdown menu under "Admin," select "Connections."
-
-4. On the Connections page, click the "Create" button to add a new connection.
-
-5. In the "Conn Id" field, fill protgres_connection as this ID is referenced in the connection in the DAGs and scripts.
-
-6. Choose "Postgres" from the "Conn Type" dropdown to specify that this connection is for PostgreSQL.
-
-7. Fill in the necessary connection details:
-   - **Host**: **Host.docker.internal**
-   - **Schema**: The default schema to use when interacting with the database.
-   - **Login**: Your PostgreSQL username.
-   - **Password**: Your PostgreSQL password.
-   - **Port**: 5432(default for postgres)
+Open the Airflow web UI.
+Navigate to the "Admin" tab located in the top menu of the Airflow UI.
+Under the "Admin" tab, select "Connections" from the dropdown menu.
+On the Connections page, click the "Create" button to add a new connection.
+In the "Conn Id" field, use "postgres_connection" as this ID is referenced in the DAGs and scripts.
+Choose "Postgres" from the "Conn Type" dropdown to specify that this connection is for PostgreSQL.
+Fill in the necessary connection details:
+Host: Use Host.docker.internal
+Schema: The default schema to use when interacting with the database.
+Login: Your PostgreSQL username.
+Password: Your PostgreSQL password.
+Port: Use 5432 (default for PostgreSQL).
 
 8. After filling in the connection details, click the "Save" button to create the connection.
 
 PostgreSQL database connection is now set up in Airflow
 
+To access Google Sheets via the Google Sheets API, follow these steps:
 
-Authentication - To access google sheets via Google Sheets API, follow the steps in the link - https://docs.gspread.org/en/latest/oauth2.html#enable-api-access-for-a-project
-
-Upload the JSON file details obtain after completing the steps through the link to secrets/airflow-poc-403917-e3d99f34c1f6.json file
+Refer to the official documentation at this link to enable API access for your project.
+Obtain the JSON file with authentication details after completing the steps in the link.
+Upload the JSON file to the following location: secrets/airflow-poc-403917-e3d99f34c1f6.json.
 

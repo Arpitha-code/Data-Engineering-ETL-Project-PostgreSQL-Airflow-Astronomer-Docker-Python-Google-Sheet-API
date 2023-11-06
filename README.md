@@ -1,34 +1,54 @@
-# Data-Engineering-ETL-Project-PostgreSQL-Airflow-Astronomer-Docker-Python-Google-Sheet-API
+# Data Engineering ETL Project with PostgreSQL, Airflow, Astronomer, Docker, Python, and Google Sheets API
 
-Authentication - To access spreadsheets via Google Sheets API, you can also go through this link - https://docs.gspread.org/en/latest/oauth2.html#enable-api-access-for-a-project
+## Prerequisites
 
-To access spreadsheets via Google Sheets API you need to authenticate and authorize your application.
+Before you begin setting up this Data Engineering ETL project, ensure you have the following prerequisites in place:
 
-If you plan to access spreadsheets on behalf of a bot account use Service Account.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
+- Docker extension installed in Visual Studio Code.
+- [Astro CLI](https://www.astronomer.io/docs/cloud/stable/develop/cli-quickstart) installed. You can use the following command to install it:
 
-If you’d like to access spreadsheets on behalf of end users (including yourself) use OAuth Client ID.
+  ```bash
+  brew install astro
 
-**Enable API Access for a Project**
+To verify that the correct Astro CLI version was installed, run:
 
-Head to Google Developers Console and create a new project (or select the one you already have).
-In the box labeled “Search for APIs and Services”, search for “Google Drive API” and enable it.
-In the box labeled “Search for APIs and Services”, search for “Google Sheets API” and enable it.
-For Bots: Using Service Account
+astro version
 
-A service account is a special type of Google account intended to represent a non-human user that needs to authenticate and be authorized to access data in Google APIs [sic].
+create a folder where you wnat the astro project set up and run the below command
 
-Since it’s a separate account, by default it does not have access to any spreadsheet until you share it with this account. Just like any other Google account.
+astro dev init
 
-**Here’s how to get one:**
+to spin up the airflow run the below code 
+astro dev start
 
-Enable API Access for a Project if you haven’t done it yet.
-Go to “APIs & Services > Credentials” and choose “Create credentials > Service account key”.
-Fill out the form
-Click “Create” and “Done”.
-Press “Manage service accounts” above Service Accounts.
-Press on ⋮ near recently created service account and select “Manage keys” and then click on “ADD KEY > Create new key”.
-Select JSON key type and press “Create”
+## Setting Up PostgreSQL in Airflow
 
-Remember the path to the downloaded credentials file. Also, in the next step you’ll need the value of client_email from this file.
+1. Open the Airflow web UI.
 
-Very important! Go to your spreadsheet and share it with a client_email from the step above. Just like you do with any other Google account. If you don’t do this, you’ll get a gspread.exceptions.SpreadsheetNotFound exception when trying to access this spreadsheet from your application or a script.
+2. In the Airflow UI, navigate to the "Admin" tab located in the top menu.
+
+3. From the dropdown menu under "Admin," select "Connections."
+
+4. On the Connections page, click the "Create" button to add a new connection.
+
+5. In the "Conn Id" field, fill protgres_connection as this ID is referenced in the connection in the DAGs and scripts.
+
+6. Choose "Postgres" from the "Conn Type" dropdown to specify that this connection is for PostgreSQL.
+
+7. Fill in the necessary connection details:
+   - **Host**: **Host.docker.internal**
+   - **Schema**: The default schema to use when interacting with the database.
+   - **Login**: Your PostgreSQL username.
+   - **Password**: Your PostgreSQL password.
+   - **Port**: 5432(default for postgres)
+
+8. After filling in the connection details, click the "Save" button to create the connection.
+
+PostgreSQL database connection is now set up in Airflow
+
+
+Authentication - To access google sheets via Google Sheets API, follow the steps in the link - https://docs.gspread.org/en/latest/oauth2.html#enable-api-access-for-a-project
+
+Upload the JSON file details obtain after completing the steps through the link to secrets/airflow-poc-403917-e3d99f34c1f6.json file
+
